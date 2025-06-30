@@ -1,5 +1,7 @@
 import { letters } from './helpers/letters';
+import { HangImage } from './components/HangImage';
 import './App.css';
+
 
 function App() {
   
@@ -7,7 +9,7 @@ function App() {
   return (
     <div className="App">
       {/* Imagenes */}
-      <h3>Imagen del Juego</h3>
+      <HangImage imageNumber={ 9 } />
 
       {/* Palabra oculta */}
       <h3>_ _ _ _ _ _ _ _ _ _</h3>
