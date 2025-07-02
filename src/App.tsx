@@ -7,12 +7,25 @@ import './App.css';
 function App() {
   
   const [ word ] = useState('COMPUTADORA');
-  const [ hiddenWord ] = useState( '_ '.repeat( word.length ) );
+  const [ hiddenWord, setHidddenWord ] = useState( '_ '.repeat( word.length ) );
   const [ attempts, setAttempts ] = useState(0)
 
   const checkLetter = (letter: string) => {
-    console.log(letter);
-    setAttempts(Math.min(attempts + 1, 9)); // Limita los intentos a un máximo de 9
+    if ( !word.includes(letter) ) {
+      setAttempts(Math.min(attempts + 1, 9)); // Limita los intentos a un máximo de 9
+      return;
+    } 
+
+    const hiddenWordArray = hiddenWord.split(' ');
+
+    for ( let i = 0; i < word.length; i++) {
+      if ( word[i] === letter ) {
+        hiddenWordArray[i] = letter; // Reemplaza el guion bajo por la letra correcta
+      }
+    }
+
+    setHidddenWord( hiddenWordArray.join(' ') );
+
   }
 
   return (
