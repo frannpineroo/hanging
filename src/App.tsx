@@ -6,10 +6,13 @@ import './App.css';
 
 function App() {
   
-  const [ attempts ] = useState(5)
+  const [ word ] = useState('COMPUTADORA');
+  const [ hiddenWord ] = useState( '_ '.repeat( word.length ) );
+  const [ attempts, setAttempts ] = useState(0)
 
   const checkLetter = (letter: string) => {
     console.log(letter);
+    setAttempts(Math.min(attempts + 1, 9)); // Limita los intentos a un máximo de 9
   }
 
   return (
@@ -18,10 +21,10 @@ function App() {
       <HangImage imageNumber={ attempts } />
 
       {/* Palabra oculta */}
-      <h3>_ _ _ _ _ _ _ _ _ _</h3>
+      <h3>{ hiddenWord }</h3>
 
       {/* Contador de intentos */}
-      <h3>Intentos: 0</h3>
+      <h3>Intentos: { attempts }</h3>
 
       {/* Botones de Letras */}
       {
